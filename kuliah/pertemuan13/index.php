@@ -67,7 +67,8 @@ if (isset($_POST['cari'])) {
       <?php endforeach; ?>
     </table>
   </div>
-
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
   <script src="js/script.js"></script>
 </body>
 
