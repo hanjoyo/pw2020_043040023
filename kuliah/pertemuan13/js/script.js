@@ -5,8 +5,8 @@ const container = document.querySelector('.container');
 // hilangkan tombol cari
 tombolCari.style.display = 'none';
 
-// event ketika kita menuliskan keyword
-keyword.addEventListener('keyup', function () {
+// debounce function memungkinkan coding menunggu user selesai typing
+const ajax_wait_typing = _.debounce(function () {
   // ajax
   // xmlhttprequest
   // const xhr = new XMLHttpRequest();
@@ -22,7 +22,10 @@ keyword.addEventListener('keyup', function () {
   fetch('ajax/ajax_cari.php?keyword=' + keyword.value)
     .then((response) => response.text())
     .then((response) => (container.innerHTML = response));
-});
+}, 500);
+
+// event ketika kita menuliskan keyword
+keyword.addEventListener('keyup', ajax_wait_typing);
 
 // Preview Image untuk Tambah dan Ubah
 function previewImage() {
